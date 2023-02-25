@@ -1,5 +1,3 @@
-echo --------------------------------------
-echo
 go run . examples/example00.txt
 echo
 read -n1 -r -p "Press any key to continue..." key
@@ -55,7 +53,10 @@ echo
 read -n1 -r -p "Press any key to continue..." key
 echo
 echo --------------------------------------
+echo
 echo badexample01
+echo
+read -n1 -r -p "Press any key to continue..." key
 echo
 go run . examples/badexample01.txt
 echo
