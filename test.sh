@@ -71,5 +71,4 @@ echo
 echo --------------------------------------
 echo Thank you for the audit! Have a nice day!
 echo --------------------------------------
-
 exit 0
