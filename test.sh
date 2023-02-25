@@ -63,6 +63,7 @@ echo
 echo myexample00
 echo
 go run . examples/myexample00.txt
+echo
 read -n1 -r -p "Press any key to continue..." key
 echo
 cat ascii.txt
