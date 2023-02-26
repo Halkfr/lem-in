@@ -1,3 +1,9 @@
+echo
+echo Toggle screen to content width
+echo
+echo Press Alt+Z in the terminal
+echo
+read -n1 -r -p "Press any key to continue..." key
 go run . examples/example00.txt
 echo
 read -n1 -r -p "Press any key to continue..." key
