@@ -1,9 +1,3 @@
-echo
-echo Toggle screen to content width
-echo
-echo Press Alt+Z in the terminal
-echo
-read -n1 -r -p "Press any key to continue..." key
 go run . examples/example00.txt
 echo
 read -n1 -r -p "Press any key to continue..." key
@@ -62,9 +56,9 @@ echo --------------------------------------
 echo
 echo badexample01
 echo
-read -n1 -r -p "Press any key to continue..." key
-echo
 go run . examples/badexample01.txt
+echo
+read -n1 -r -p "Press any key to continue..." key
 echo
 echo myexample00
 echo
@@ -77,4 +71,5 @@ echo
 echo --------------------------------------
 echo Thank you for the audit! Have a nice day!
 echo --------------------------------------
+
 exit 0
