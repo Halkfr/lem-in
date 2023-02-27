@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 )
 
 type Graph struct {
@@ -20,6 +21,8 @@ type Vertex struct {
 	visited  bool
 	name     string
 	adjacent []*Vertex
+	x        int
+	y        int
 }
 
 type SortPaths struct {
@@ -32,14 +35,17 @@ type SortPaths struct {
 	result        [][][]string
 }
 
-func (g *Graph) AddVertex(key string) {
+func (g *Graph) AddVertex(key string, coordinates []string) {
+		x,_ := strconv.Atoi(coordinates[0])
+		y,_ := strconv.Atoi(coordinates[1])
+
 	if key == g.end {
-		g.vertices = append(g.vertices, &Vertex{name: key, visited: true})
+		g.vertices = append(g.vertices, &Vertex{name: key, x: x, y: y, visited: true})
 	} else if contains(g.vertices, key) {
 		// err := fmt.Errorf("Vertex %v not added because it is an existing key", key)
 		// fmt.Println(err.Error())
 	} else {
-		g.vertices = append(g.vertices, &Vertex{name: key, visited: false})
+		g.vertices = append(g.vertices, &Vertex{name: key, x: x, y: y, visited: false})
 	}
 }
 

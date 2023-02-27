@@ -26,7 +26,7 @@ func main() {
 		counter: 1,
 	}
 
-	if antNum(s, test) <= 0 || antNum(s, test) > 100000 { 
+	if antNum(s, test) <= 0 || antNum(s, test) > 100000 {
 		fmt.Println("ERROR: invalid data format, invalid number for ants")
 		return
 	}
@@ -41,11 +41,13 @@ func main() {
 		return
 	}
 
-	for _, v := range allRooms(s) {
-		test.AddVertex(v)
+	for i, v := range allRooms(s) { //adds vertices to the graph
+		coordinates := coordinates(s)
+		// fmt.Println(v, coordinates[i])
+		test.AddVertex(v, coordinates[i])
 	}
 
-	for _, v := range theLinks(s) {
+	for _, v := range theLinks(s) { // adds edges
 		vertex := strings.Split(v, ", ")
 		test.AddEdge(vertex[0], vertex[1])
 		test.AddEdge(vertex[1], vertex[0])
@@ -58,5 +60,5 @@ func main() {
 	desidePath(test, sort)
 	createAnts(test, sort)
 
-	fmt.Printf("\nProgram executed in %v", time.Since(start))
+	fmt.Printf("\nProgram executed in %v\n", time.Since(start))
 }

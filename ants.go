@@ -141,4 +141,6 @@ func createAnts(g *Graph, s *SortPaths) {
 			}
 		}
 	}
+
+
 }

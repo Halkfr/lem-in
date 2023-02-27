@@ -31,6 +31,22 @@ func allRooms(formated string) []string {
 	return res
 }
 
+func coordinates(formated string) [][]string {
+	var sliceofCoordinates []string
+	var res [][]string
+	re := regexp.MustCompile(`[a-zA-z_0-9]+ (\d+) (\d+)`)
+	all := re.FindAllStringSubmatch(formated, -1)
+	if len(all) > 0 {
+		for _, group := range all {
+			sliceofCoordinates := append(sliceofCoordinates, group[1], group[2])
+			res = append(res, sliceofCoordinates)
+		}
+		return res
+	}
+	return res
+}
+
+
 func antNum(formated string, g *Graph) int {
 	var res string
 	re := regexp.MustCompile(`^\d+`)
@@ -80,4 +96,3 @@ func theLinks(formated string) []string {
 	}
 	return res
 }
-
