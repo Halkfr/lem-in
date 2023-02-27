@@ -58,5 +58,5 @@ func main() {
 	desidePath(test, sort)
 	createAnts(test, sort)
 
-	fmt.Printf("Program executed in %v", time.Since(start))
+	fmt.Printf("\nProgram executed in %v", time.Since(start))
 }
