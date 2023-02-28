@@ -6,9 +6,21 @@ import (
 	"log"
 	"strings"
 	"time"
+
 	"github.com/fstanis/screenresolution"
 	"github.com/fzipp/canvas"
 )
+
+type Pair struct {
+	previous string
+	current  string
+	dx       float64
+	dy       float64
+	x        float64
+	y        float64
+	v0       *Vertex
+	v1       *Vertex
+}
 
 const RECT_SIDE = 20
 
@@ -22,7 +34,6 @@ func visualization(g *Graph) {
 	resolution := screenresolution.GetPrimary()
 	resolutionWidth = resolution.Width
 	resolutionHeight = resolution.Height
-	// fmt.Println("res", resolution)
 
 	err := canvas.ListenAndServe(":8080", func(ctx *canvas.Context) {
 		run(ctx, g) // pass variable to run function
@@ -71,21 +82,21 @@ func drawPoints(ctx *canvas.Context, g *Graph) {
 	}
 }
 
-type Pair struct {
-	previous string
-	current  string
-	dx       float64
-	dy       float64
-	x        float64
-	y        float64
-	v0       *Vertex
-	v1       *Vertex
+// stretches given coordinates
+func scale(n float64) float64 {
+	return n*70 + 30
+}
+
+// draw edge
+func drawLine(ctx *canvas.Context, x0, y0, x1, y1 float64) {
+	ctx.BeginPath()
+	ctx.MoveTo(x0, y0)
+	ctx.LineTo(x1, y1)
+	ctx.Stroke()
 }
 
 func run(ctx *canvas.Context, g *Graph) {
-	// fmt.Println("Who released the ants?!")
-	// clear(ctx)
-
+	// go through answers's steps
 	for i := 1; i < len(g.visualization); i++ {
 		var p []Pair
 		for _, pair := range g.visualization[i] {
@@ -93,6 +104,7 @@ func run(ctx *canvas.Context, g *Graph) {
 			vertex := room[1]
 			ant := room[0]
 			var previousVertex string
+			// find ant on previous step
 			for _, prevPair := range g.visualization[i-1] {
 				prevRoom := strings.Split(prevPair, "-")
 				prevVertex := prevRoom[1]
@@ -101,34 +113,24 @@ func run(ctx *canvas.Context, g *Graph) {
 					previousVertex = prevVertex
 				}
 			}
+			// if didn't find - ant previous room was the start room
 			if previousVertex == "" {
 				previousVertex = g.start
 			}
+			// add pair previous-current to slice for rendering movings by step
 			p = append(p, Pair{current: vertex, previous: previousVertex})
 		}
 		moveAnts(g, ctx, p)
-		// time.Sleep(2 * time.Second)
 	}
-
-	// fmt.Println("All ants successfully finished the long way")
 }
 
-func scale(n float64) float64 {
-	return n * 70 + 30
-}
-
-func drawLine(ctx *canvas.Context, x0, y0, x1, y1 float64) {
-	ctx.BeginPath()
-	ctx.MoveTo(x0, y0)
-	ctx.LineTo(x1, y1)
-	ctx.Stroke()
-}
-
+// render ants moving at one step
 func moveAnts(g *Graph, ctx *canvas.Context, p []Pair) {
-	// fmt.Println("p", p)
+
 	duration := time.Second * 1
 	steps := 60
 
+	// set init values for each pair of vertexes
 	for i := 0; i < len(p); i++ {
 		p[i].v0 = g.getVertex(p[i].previous)
 		p[i].v1 = g.getVertex(p[i].current)
@@ -140,8 +142,7 @@ func moveAnts(g *Graph, ctx *canvas.Context, p []Pair) {
 		p[i].y = float64(p[i].v0.y)
 	}
 
-	// fmt.Println("p", p)
-
+	// render moving by edge
 	for i := 0; i < steps; i++ {
 		clear(ctx)
 		drawEdges(ctx, g)
@@ -164,6 +165,7 @@ func moveAnts(g *Graph, ctx *canvas.Context, p []Pair) {
 	}
 }
 
+// clear screen
 func clear(ctx *canvas.Context) {
 	ctx.SetFillStyle(color.RGBA{R: 229, G: 222, B: 202, A: 255})
 	ctx.FillRect(0, 0, float64(resolutionWidth), float64(resolutionHeight))

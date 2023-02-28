@@ -105,7 +105,7 @@ func createAnts(g *Graph, s *SortPaths) {
 		for i := len(combo); i <= len(antsNames); {
 			for room = 0; room < len(combo); {
 				for _, ants := range antsNames[:i] {
-					if antFinished[ants] != true { // check if first paths are visited
+					if !antFinished[ants]{ // check if first paths are visited
 
 						if visitCount[ants] == 0 { // if new ant is added
 
@@ -134,7 +134,6 @@ func createAnts(g *Graph, s *SortPaths) {
 				outputString = ""
 
 				g.visualization = append(g.visualization, tmp)
-				// fmt.Println(g.visualization[0][1])
 				tmp = nil
 
 				i += len(combo)

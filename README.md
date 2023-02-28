@@ -12,16 +12,11 @@ To accomplish this, we use a combination of depth-first search (DFS) and a heuri
 4. Next, ants are assigned to the tunnels based on the selected combination of paths, with no more than one ant per tunnel at a time.
 5. The ants then run along their assigned tunnels to the destination, following the path laid out for them.
 6. As a bonus, a visualization of the ant farm and the ants' movements is available by default.
-
-
-## Authors
-  
-Orel Margarita @maggieeagle
-
-Litvintsev Anton @Antosha7
   
 
 ## Usage
+
+### How to run
 
 To run on local machine:
 
@@ -41,6 +36,31 @@ To test [01 Edu cases](https://github.com/01-edu/public/tree/master/subjects/lem
 
 - Press any key to go to the next case
 
+### Input file structure
+
+```
+number_of_ants
+the_rooms
+the_links
+
+Lx-y Lz-w Lr-o ...
+```
+
+For example, this is a valid input file:
+
+```
+4
+##start
+0 0 3
+2 2 5
+3 4 0
+##end
+1 8 3
+0-2
+2-3
+3-1
+```
+
 
 ## Implementation details
 
@@ -49,6 +69,13 @@ To test [01 Edu cases](https://github.com/01-edu/public/tree/master/subjects/lem
 - Handle input errors specifically
 
 - Visualize with [github.com/fzipp/canvas](github.com/fzipp/canvas)
+
+
+## Authors
+  
+Orel Margarita @maggieeagle
+
+Litvintsev Anton @Antosha7
 
 
 ## Issue solving
