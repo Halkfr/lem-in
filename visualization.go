@@ -83,7 +83,8 @@ type Pair struct {
 }
 
 func run(ctx *canvas.Context, g *Graph) {
-	fmt.Println("Who released the ants?!")
+	// fmt.Println("Who released the ants?!")
+	// clear(ctx)
 
 	for i := 1; i < len(g.visualization); i++ {
 		var p []Pair
@@ -104,32 +105,13 @@ func run(ctx *canvas.Context, g *Graph) {
 				previousVertex = g.start
 			}
 			p = append(p, Pair{current: vertex, previous: previousVertex})
-			// x := scale(float64(g.getVertex(vertex).x))
-			// y := scale(float64(g.getVertex(vertex).y))
-			// ctx.SetFillStyle(color.RGBA{B: 200, A: 255})
-			// ctx.FillRect(x, y, RECT_SIDE, RECT_SIDE)
 		}
 		moveAnts(g, ctx, p)
-		ctx.Flush()
 		// time.Sleep(2 * time.Second)
 	}
 
-	fmt.Println("All ants successfully finished the long way")
-
-	// ctx.FillRect(10, 10, 50, 50)
-	// ...
+	// fmt.Println("All ants successfully finished the long way")
 }
-
-// ctx.SetStrokeStyle(p1.rgba)
-// ctx.BeginPath()
-// ctx.MoveTo(p1.x, p1.y)
-// ctx.LineTo(p2.x, p2.y)
-// ctx.Stroke()
-
-// centerX, centerY := 100, 100
-// radius := 50
-// style := canvas.DefaultStyle.Fill("red")
-// img.DrawCircle(centerX, centerY, radius, style)
 
 func scale(n float64) float64 {
 	return n * 70
@@ -183,6 +165,6 @@ func moveAnts(g *Graph, ctx *canvas.Context, p []Pair) {
 }
 
 func clear(ctx *canvas.Context) {
-	ctx.SetFillStyle(color.RGBA{R: 255, G: 255, B: 255, A: 255})
+	ctx.SetFillStyle(color.RGBA{R: 229, G: 222, B: 202, A: 255})
 	ctx.FillRect(0, 0, float64(resolutionWidth), float64(resolutionHeight))
 }
