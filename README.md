@@ -26,7 +26,7 @@ To run on local machine:
 
 - Open [http://localhost:8080/](http://localhost:8080/) in browser to look at visualization
 
-To test [01 Edu cases](https://github.com/01-edu/public/tree/master/subjects/lem-in/auditcases):
+To test [01 Edu cases](https://github.com/01-edu/public/tree/master/subjects/lem-in/audit):
 
 - Run `./test.sh`
 
@@ -46,7 +46,7 @@ the_links
 Lx-y Lz-w Lr-o ...
 ```
 
-For example, this is a valid input file:
+Example of valid input file:
 
 ```
 4
