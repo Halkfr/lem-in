@@ -59,6 +59,7 @@ func main() {
 	bestPathCombinations(test, sort)
 	desidePath(test, sort)
 	createAnts(test, sort)
+	visualization(test)
 
 	fmt.Printf("\nProgram executed in %v\n", time.Since(start))
 }

@@ -99,6 +99,7 @@ func createAnts(g *Graph, s *SortPaths) {
 	for _, combo := range s.result {
 
 		var outputString string
+		var tmp []string
 		room := 0
 
 		for i := len(combo); i <= len(antsNames); {
@@ -118,6 +119,8 @@ func createAnts(g *Graph, s *SortPaths) {
 							}
 						}
 
+						tmp = append(tmp, ants + "-" + combo[orderOfTunnel[ants]][visitCount[ants]])
+
 						outputString = outputString + ants + "-" + combo[orderOfTunnel[ants]][visitCount[ants]] + " "
 						visitCount[ants]++
 
@@ -130,6 +133,10 @@ func createAnts(g *Graph, s *SortPaths) {
 				fmt.Println(outputString)
 				outputString = ""
 
+				g.visualization = append(g.visualization, tmp)
+				// fmt.Println(g.visualization[0][1])
+				tmp = nil
+
 				i += len(combo)
 				if i > len(antsNames) {
 					i = len(antsNames)
@@ -141,6 +148,4 @@ func createAnts(g *Graph, s *SortPaths) {
 			}
 		}
 	}
-
-
 }

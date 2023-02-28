@@ -15,6 +15,7 @@ type Graph struct {
 	vertices     []*Vertex
 	path         []string
 	allPaths     [][]string
+	visualization [][]string
 }
 
 type Vertex struct {
