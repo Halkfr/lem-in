@@ -1,4 +1,10 @@
 echo
+echo Toggle size to context width inside the terminal, press: "alt+z"
+echo
+echo To check answers go to: https://github.com/01-edu/public/blob/master/subjects/lem-in/examples/README.md
+echo
+read -n1 -r -p "Press any key to continue..." key
+echo
 echo example00
 echo
 go run . examples/example00.txt
