@@ -68,7 +68,7 @@ Example of valid input file:
 
 - Handle input errors specifically
 
-- Visualize with [github.com/fzipp/canvas](github.com/fzipp/canvas)
+- Visualize with [github.com/fzipp/canvas](https://github.com/fzipp/canvas)
 
 
 ## Authors
