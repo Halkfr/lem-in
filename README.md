@@ -46,7 +46,7 @@ To test [01 Edu cases](https://github.com/01-edu/public/tree/master/subjects/lem
 
 - DFS
 
-- Handle input errors specifecly 
+- Handle input errors specifically
 
 - Visualize with [github.com/fzipp/canvas](github.com/fzipp/canvas)
 
