@@ -6,7 +6,6 @@ import (
 	"log"
 	"strings"
 	"time"
-
 	"github.com/fstanis/screenresolution"
 	"github.com/fzipp/canvas"
 )
@@ -56,18 +55,19 @@ func drawPoints(ctx *canvas.Context, g *Graph) {
 			x := scale(float64(vertex.x))
 			y := scale(float64(vertex.y))
 			ctx.FillRect(x, y, RECT_SIDE, RECT_SIDE)
-			ctx.SetFillStyle(color.RGBA{R: 180, G: 180, B: 180, A: 255})
 		case g.end:
 			ctx.SetFillStyle(color.RGBA{R: 200, A: 255})
 			x := scale(float64(vertex.x))
 			y := scale(float64(vertex.y))
 			ctx.FillRect(x, y, RECT_SIDE, RECT_SIDE)
-			ctx.SetFillStyle(color.RGBA{R: 180, G: 180, B: 180, A: 255})
 		default:
 			x := scale(float64(vertex.x))
 			y := scale(float64(vertex.y))
 			ctx.FillRect(x, y, RECT_SIDE, RECT_SIDE)
 		}
+		ctx.SetFillStyle(color.RGBA{R: 0, G: 0, B: 0, A: 255})
+		ctx.FillText(vertex.name, scale(float64(vertex.x)), scale(float64(vertex.y))-10)
+		ctx.SetFillStyle(color.RGBA{R: 180, G: 180, B: 180, A: 255})
 	}
 }
 
@@ -114,7 +114,7 @@ func run(ctx *canvas.Context, g *Graph) {
 }
 
 func scale(n float64) float64 {
-	return n * 70
+	return n * 70 + 30
 }
 
 func drawLine(ctx *canvas.Context, x0, y0, x1, y1 float64) {
@@ -129,7 +129,7 @@ func moveAnts(g *Graph, ctx *canvas.Context, p []Pair) {
 	duration := time.Second * 1
 	steps := 60
 
-	for i:=0; i < len(p); i++ {
+	for i := 0; i < len(p); i++ {
 		p[i].v0 = g.getVertex(p[i].previous)
 		p[i].v1 = g.getVertex(p[i].current)
 
@@ -146,7 +146,7 @@ func moveAnts(g *Graph, ctx *canvas.Context, p []Pair) {
 		clear(ctx)
 		drawEdges(ctx, g)
 		drawPoints(ctx, g)
-		for i:=0; i < len(p); i++  {
+		for i := 0; i < len(p); i++ {
 			p[i].x += p[i].dx
 			p[i].y += p[i].dy
 
