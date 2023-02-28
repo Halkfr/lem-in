@@ -43,7 +43,6 @@ func main() {
 
 	for i, v := range allRooms(s) { //adds vertices to the graph
 		coordinates := coordinates(s)
-		// fmt.Println(v, coordinates[i])
 		test.AddVertex(v, coordinates[i])
 	}
 
@@ -59,7 +58,6 @@ func main() {
 	bestPathCombinations(test, sort)
 	desidePath(test, sort)
 	createAnts(test, sort)
-	visualization(test)
-
 	fmt.Printf("\nProgram executed in %v\n", time.Since(start))
+	visualization(test)
 }
