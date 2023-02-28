@@ -1,8 +1,13 @@
+echo
+echo example00
+echo
 go run . examples/example00.txt
 echo
 read -n1 -r -p "Press any key to continue..." key
 echo
 echo --------------------------------------
+echo
+echo example01
 echo
 go run . examples/example01.txt
 echo
@@ -10,11 +15,15 @@ read -n1 -r -p "Press any key to continue..." key
 echo
 echo --------------------------------------
 echo
+echo example02
+echo
 go run . examples/example02.txt
 echo
 read -n1 -r -p "Press any key to continue..." key
 echo
 echo --------------------------------------
+echo
+echo example03
 echo
 go run . examples/example03.txt
 echo
@@ -22,11 +31,15 @@ read -n1 -r -p "Press any key to continue..." key
 echo
 echo --------------------------------------
 echo
+echo example04
+echo
 go run . examples/example04.txt
 echo
 read -n1 -r -p "Press any key to continue..." key
 echo
 echo --------------------------------------
+echo
+echo example05
 echo
 go run . examples/example05.txt
 echo
@@ -34,11 +47,15 @@ read -n1 -r -p "Press any key to continue..." key
 echo
 echo --------------------------------------
 echo
+echo example06
+echo
 go run . examples/example06.txt
 echo
 read -n1 -r -p "Press any key to continue..." key
 echo
 echo --------------------------------------
+echo
+echo example07
 echo
 go run . examples/example07.txt
 echo
