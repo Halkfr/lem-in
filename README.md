@@ -12,6 +12,8 @@ To accomplish this, we use a combination of depth-first search (DFS) and a heuri
 4. Next, ants are assigned to the tunnels based on the selected combination of paths, with no more than one ant per tunnel at a time.
 5. The ants then run along their assigned tunnels to the destination, following the path laid out for them.
 6. As a bonus, a visualization of the ant farm and the ants' movements is available by default.
+
+![Visualization screenshot](screenshot.png "visualization")
   
 
 ## Usage
