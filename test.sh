@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo
 echo Toggle size to context width inside the terminal, press: "Alt+Z"
 echo
