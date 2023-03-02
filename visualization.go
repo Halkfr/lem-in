@@ -7,7 +7,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/fstanis/screenresolution"
 	"github.com/fzipp/canvas"
 )
 
@@ -24,21 +23,12 @@ type Pair struct {
 
 const RECT_SIDE = 20
 
-var resolutionWidth int
-var resolutionHeight int
+var resolutionWidth int = 1920
+var resolutionHeight int = 1080
 
 func visualization(g *Graph) {
 	fmt.Println("\nStarting server at http://127.0.0.1:8080/")
 	fmt.Println("Quit the server with CONTROL-C.")
-
-	resolution := screenresolution.GetPrimary()
-	if resolution == nil {
-		resolutionWidth = 1920
-		resolutionHeight = 1080
-	} else {
-		resolutionWidth = resolution.Width
-		resolutionHeight = resolution.Height
-	}
 
 	err := canvas.ListenAndServe(":8080", func(ctx *canvas.Context) {
 		run(ctx, g) // pass variable to run function
