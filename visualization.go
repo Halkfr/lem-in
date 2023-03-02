@@ -32,8 +32,13 @@ func visualization(g *Graph) {
 	fmt.Println("Quit the server with CONTROL-C.")
 
 	resolution := screenresolution.GetPrimary()
-	resolutionWidth = resolution.Width
-	resolutionHeight = resolution.Height
+	if resolution == nil {
+		resolutionWidth = 1920
+		resolutionHeight = 1080
+	} else {
+		resolutionWidth = resolution.Width
+		resolutionHeight = resolution.Height
+	}
 
 	err := canvas.ListenAndServe(":8080", func(ctx *canvas.Context) {
 		run(ctx, g) // pass variable to run function
