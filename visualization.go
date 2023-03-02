@@ -42,7 +42,7 @@ func visualization(g *Graph) {
 
 	err := canvas.ListenAndServe(":8080", func(ctx *canvas.Context) {
 		run(ctx, g) // pass variable to run function
-	}, canvas.Size(resolution.Width, resolution.Height), canvas.Title("Running ants"))
+	}, canvas.Size(resolutionWidth, resolutionHeight), canvas.Title("Running ants"))
 	if err != nil {
 		log.Fatal(err)
 	}
